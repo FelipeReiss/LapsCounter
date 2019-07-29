@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+            android:title="Option 1"
+            android:id="@+id/logOption1"
+    />
+    <item
+            android:title="Option2"
+            android:id="@+id/logOption2"
+    />
+    <item
+            android:title="Option 3"
+            android:id="@+id/logOption3"
+    />
+    <item
+            android:title="Option4"
+            android:id="@+id/logOption4"
+    />
+</menu>

@@ -1,15 +1,15 @@
 package br.com.helpdev.lapscounter
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.SystemClock
 import android.preference.PreferenceManager
-import android.view.KeyEvent
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
+import android.view.*
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -29,6 +29,7 @@ import kotlinx.android.synthetic.main.distances_layout.*
 import kotlinx.android.synthetic.main.include_buttons.*
 import kotlinx.android.synthetic.main.include_chronometer.*
 import kotlinx.android.synthetic.main.include_lap_log.*
+import kotlinx.android.synthetic.main.item_lap_log.*
 import kotlinx.android.synthetic.main.lap_log_chronometers.*
 import kotlinx.android.synthetic.main.main_toolbar.*
 import kotlin.concurrent.thread
@@ -55,11 +56,40 @@ abstract class ChronometerActivity : AppCompatActivity(), HeadsetButtonControl.H
         setSupportActionBar(toolbar)
         configureOnClicks()
         viewModel = loadViewModel()
+
+        registerForContextMenu(numberOfLap_fix)
+
         if (null != savedInstanceState) {
             restoreInstanceVisibilityViews(savedInstanceState)
             onRestoreChronometer()
         }
         updateParameters()
+    }
+
+    override fun onCreateContextMenu(menu: ContextMenu?, v: View?, menuInfo: ContextMenu.ContextMenuInfo?) {
+        super.onCreateContextMenu(menu, v, menuInfo)
+        menuInflater.inflate(R.menu.row_log_long_press, menu)
+    }
+
+    override fun onContextItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId){
+            R.id.logOption1 -> {
+                Toast.makeText(this, "Option 1 Selected at ${item.tooltipText}", Toast.LENGTH_SHORT).show()
+            }
+            R.id.logOption2 -> {
+                Toast.makeText(this, "Option 2 Selected at ${item.tooltipText}", Toast.LENGTH_SHORT).show()
+            }
+            R.id.logOption3 -> {
+                Toast.makeText(this, "Option 3 Selected at ${item.tooltipText}", Toast.LENGTH_SHORT).show()
+            }
+            R.id.logOption4 -> {
+                Toast.makeText(this, "Option 4 Selected at ${item.tooltipText}", Toast.LENGTH_SHORT).show()
+            }
+            else -> {
+                Toast.makeText(this, "Invalid Option", Toast.LENGTH_SHORT).show()
+            }
+        }
+        return super.onContextItemSelected(item)
     }
 
     private fun loadViewModel() = ViewModelProviders.of(this, InjectorUtils.provideActivityViewModelFactory())
@@ -74,6 +104,10 @@ abstract class ChronometerActivity : AppCompatActivity(), HeadsetButtonControl.H
         bt_save.setOnClickListener { btSavePressed() }
         bt_restart.setOnClickListener { btRestartPressed() }
         bt_stop.setOnClickListener { btStopPressed() }
+    }
+
+    private fun rowChronometerLogClick() {
+
     }
 
     private fun onRestoreChronometer() {
