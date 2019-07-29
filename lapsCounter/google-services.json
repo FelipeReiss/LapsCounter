@@ -1,0 +1,57 @@
+{
+  "project_info": {
+    "project_number": "3112091705",
+    "firebase_url": "https://cronometro-de-natacao.firebaseio.com",
+    "project_id": "cronometro-de-natacao",
+    "storage_bucket": "cronometro-de-natacao.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:3112091705:android:2a184140afd4b13c",
+        "android_client_info": {
+          "package_name": "br.com.helpdev.lapscounter.swimming"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "3112091705-1scijbjvqrmff72fhmm3gqmo1qj5cs6t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.helpdev.lapscounter.swimming",
+            "certificate_hash": "b062c403e28771823709a1eb5e8a7574ecda393c"
+          }
+        },
+        {
+          "client_id": "3112091705-4n7jfvv4239avfa7u5f9gd2k96aqp60v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.helpdev.lapscounter.swimming",
+            "certificate_hash": "e9090f3e942920d389f72c1d13478b94cc1dadde"
+          }
+        },
+        {
+          "client_id": "3112091705-1ps2jhe828aaplkp3uji8si0m1rmtq6j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBi55v_q7YOxBz_TS2v0tdjSq05bVFYroM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "3112091705-1ps2jhe828aaplkp3uji8si0m1rmtq6j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-4334384724173584~1825777596"
+    }
+  ],
+  "configuration_version": "1"
+}
