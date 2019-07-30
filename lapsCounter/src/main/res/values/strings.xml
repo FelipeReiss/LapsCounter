@@ -9,6 +9,12 @@
     <string name="sub_title_laps">Lap - Time - Accumulated - Paused</string>
     <string name="info_distance_lap">Lap\n%.2fm</string>
     <string name="info_travelled">Travelled\n%.2fm</string>
+    <string name="ask_lap_delete">Are you sure that want to remove number %d lap?</string>
+    <string name="ask_lap_delete_title">Remove Lap</string>
+    <string name="lap_not_deleted_msg">Number %d lap don\'t deleted</string>
+    <string name="lap_deleted_msg">Done, number %d lap deleted successfully</string>
+    <string name="yes_confirmation">Yes</string>
+    <string name="no_confirmation">No</string>
     <string name="info_pace" formatted="true">Pace\n%02d:%02d/100m</string>
     <string name="title_chronometer">Chronometer</string>
     <string name="menu_settings">Settings</string>

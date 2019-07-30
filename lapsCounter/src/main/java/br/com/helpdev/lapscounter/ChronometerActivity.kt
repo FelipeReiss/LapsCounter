@@ -57,39 +57,11 @@ abstract class ChronometerActivity : AppCompatActivity(), HeadsetButtonControl.H
         configureOnClicks()
         viewModel = loadViewModel()
 
-        registerForContextMenu(numberOfLap_fix)
-
         if (null != savedInstanceState) {
             restoreInstanceVisibilityViews(savedInstanceState)
             onRestoreChronometer()
         }
         updateParameters()
-    }
-
-    override fun onCreateContextMenu(menu: ContextMenu?, v: View?, menuInfo: ContextMenu.ContextMenuInfo?) {
-        super.onCreateContextMenu(menu, v, menuInfo)
-        menuInflater.inflate(R.menu.row_log_long_press, menu)
-    }
-
-    override fun onContextItemSelected(item: MenuItem?): Boolean {
-        when (item?.itemId){
-            R.id.logOption1 -> {
-                Toast.makeText(this, "Option 1 Selected at ${item.tooltipText}", Toast.LENGTH_SHORT).show()
-            }
-            R.id.logOption2 -> {
-                Toast.makeText(this, "Option 2 Selected at ${item.tooltipText}", Toast.LENGTH_SHORT).show()
-            }
-            R.id.logOption3 -> {
-                Toast.makeText(this, "Option 3 Selected at ${item.tooltipText}", Toast.LENGTH_SHORT).show()
-            }
-            R.id.logOption4 -> {
-                Toast.makeText(this, "Option 4 Selected at ${item.tooltipText}", Toast.LENGTH_SHORT).show()
-            }
-            else -> {
-                Toast.makeText(this, "Invalid Option", Toast.LENGTH_SHORT).show()
-            }
-        }
-        return super.onContextItemSelected(item)
     }
 
     private fun loadViewModel() = ViewModelProviders.of(this, InjectorUtils.provideActivityViewModelFactory())
@@ -104,10 +76,6 @@ abstract class ChronometerActivity : AppCompatActivity(), HeadsetButtonControl.H
         bt_save.setOnClickListener { btSavePressed() }
         bt_restart.setOnClickListener { btRestartPressed() }
         bt_stop.setOnClickListener { btStopPressed() }
-    }
-
-    private fun rowChronometerLogClick() {
-
     }
 
     private fun onRestoreChronometer() {
@@ -173,7 +141,30 @@ abstract class ChronometerActivity : AppCompatActivity(), HeadsetButtonControl.H
     }
 
     private fun createAdapter() {
-        recycler_view.adapter = LapsAdapter(this, viewModel.chronometer.getObChronometer().laps)
+        recycler_view.adapter = LapsAdapter(this,
+            viewModel.chronometer.getObChronometer().laps, {
+                   pos, lap ->
+
+                       val alertDialogBuilder = AlertDialog.Builder(this)
+                       with (alertDialogBuilder)
+                       {
+                           setTitle(getString(R.string.ask_lap_delete_title))
+                           setMessage(getString(R.string.ask_lap_delete, (pos + 1)))
+                           setPositiveButton(getString(R.string.yes_confirmation)) { _, _ -> deleteLap(pos) }
+                           setNegativeButton(getString(R.string.no_confirmation)){
+                               _, _ -> Toast.makeText(context,
+                               getString(R.string.lap_not_deleted_msg, (pos + 1)),
+                               Toast.LENGTH_LONG).show()
+                           }
+                           show()
+                       }
+            }
+        )
+    }
+
+    private fun deleteLap(pos: Int){
+
+        Toast.makeText(this, getString(R.string.lap_deleted_msg, (pos + 1)), Toast.LENGTH_LONG).show()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

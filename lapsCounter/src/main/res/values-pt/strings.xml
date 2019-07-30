@@ -9,6 +9,12 @@
     <string name="sub_title_laps">Volta - Tempo - Acumulado - Pausado</string>
     <string name="info_distance_lap">Volta\n%.2fm</string>
     <string name="info_travelled">Percorrido\n%.2fm</string>
+    <string name="ask_lap_delete">Tem certeza que deseja deletar a volta de número %d?</string>
+    <string name="lap_not_deleted_msg">Volta de número %d não deletada</string>
+    <string name="lap_deleted_msg">Feito, Volta de número %d deletada com sucesso</string>
+    <string name="yes_confirmation">Sim</string>
+    <string name="no_confirmation">Não</string>>
+    <string name="ask_lap_delete_title">Remover Volta</string>
     <string name="info_pace" formatted="true">Ritimo\n%02d:%02d/100m</string>
     <string name="title_chronometer">Cronometro</string>
     <string name="menu_settings">Configurações</string>

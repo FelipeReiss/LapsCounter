@@ -70,7 +70,7 @@ class ActivityFragment : Fragment() {
 
     private fun configureLapsLog(activityEntity: ActivityEntity, binding: FragmentActivityBinding) {
         val toObLaps = activityEntity.chronometer!!.toObLaps()
-        binding.layoutLog.recycler_view.adapter = LapsAdapter(context!!, toObLaps, false)
+        binding.layoutLog.recycler_view.adapter = LapsAdapter(context!!, toObLaps, {_, _ -> },false)
         if (toObLaps.isNotEmpty()) binding.layoutLog.text_view_empty.visibility = View.GONE
     }
 
