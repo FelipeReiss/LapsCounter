@@ -144,7 +144,6 @@ abstract class ChronometerActivity : AppCompatActivity(), HeadsetButtonControl.H
         recycler_view.adapter = LapsAdapter(this,
             viewModel.chronometer.getObChronometer().laps, {
                    pos, lap ->
-
                        val alertDialogBuilder = AlertDialog.Builder(this)
                        with (alertDialogBuilder)
                        {
