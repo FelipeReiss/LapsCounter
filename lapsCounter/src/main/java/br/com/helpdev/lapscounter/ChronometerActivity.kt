@@ -143,7 +143,7 @@ abstract class ChronometerActivity : AppCompatActivity(), HeadsetButtonControl.H
     private fun createAdapter() {
         recycler_view.adapter = LapsAdapter(this,
             viewModel.chronometer.getObChronometer().laps, {
-                   pos, lap ->
+                    pos, _ ->
                        val alertDialogBuilder = AlertDialog.Builder(this)
                        with (alertDialogBuilder)
                        {
@@ -162,7 +162,10 @@ abstract class ChronometerActivity : AppCompatActivity(), HeadsetButtonControl.H
     }
 
     private fun deleteLap(pos: Int){
-
+        viewModel.chronometer.getObChronometer().removeLap(pos)
+        refreshChronometerLog()
+        updateInfoTravelled()
+        recycler_view.adapter?.notifyDataSetChanged()
         Toast.makeText(this, getString(R.string.lap_deleted_msg, (pos + 1)), Toast.LENGTH_LONG).show()
     }
 
